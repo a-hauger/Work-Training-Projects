@@ -2,6 +2,7 @@
 
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
 class Actions(QObject):
 	def __init__(self):
@@ -12,19 +13,41 @@ class Actions(QObject):
 		self.isModified = 0
 
 		#file actions
-		self.newAction = QAction("New", self)
-		self.restartAction = QAction("Restart", self)
-		self.saveAction = QAction("Save", self)
-		self.openAction = QAction("Open", self)
-		self.exitAction = QAction("Exit", self)
+		self.newAction = QAction("&New", self)
+		self.newAction.setShortcut("CTRL+N")
+		self.newAction.setIcon(QIcon("NewMadLib.png"))
+
+		self.restartAction = QAction("&Restart", self)
+		self.restartAction.setShortcut("CTRL+R")
+		self.restartAction.setIcon(QIcon("reset.png"))
+
+		self.saveAction = QAction("&Save", self)
+		self.saveAction.setShortcut("CTRL+S")
+		self.saveAction.setIcon(QIcon("SaveIcon.png"))
+
+		self.openAction = QAction("&Open", self)
+		self.openAction.setShortcut("CTRL+O")
+		self.openAction.setIcon(QIcon("OpenIcon.png"))
+
+		self.exitAction = QAction("&Exit", self)
+		self.exitAction.setShortcut("CTRL+E")
+		self.exitAction.setIcon(QIcon("exit.png"))
 
 		#edit actions
-		self.backAction = QAction("Back", self)
-		self.themeAction = QAction("Themes", self)
+		self.backAction = QAction("&Back", self)
+		self.backAction.setShortcut("CTRL+B")
+		self.backAction.setIcon(QIcon("BackIcon.png"))
+
+		self.themeAction = QAction("&Themes", self)
+		self.themeAction.setShortcut("CTRL+T")
+		self.themeAction.setIcon(QIcon("palette.png"))
 
 		#help actions
-		self.howToAction = QAction("How To", self)
-		self.aboutAction = QAction("About", self)
+		self.howToAction = QAction("&How To", self)
+		self.howToAction.setShortcut("CTRL+H")
+
+		self.aboutAction = QAction("&About", self)
+		self.aboutAction.setShortcut("CTRL+A")
 
 	def addSeparators(self, actionList):
 
@@ -58,6 +81,10 @@ class Actions(QObject):
 
 		return (actionList)
 
+	def getToolbarActions(self):
+		actionList = self.addSeparators([self.newAction, self.saveAction, self.openAction, self.backAction])
+
+		return (actionList)
 
 	"""*************************************************************"""
 	""" 			HELPER ACTIONS 				"""

@@ -5,13 +5,14 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 class howToDialog(QDialog):
-	def __init__(self):
+	def __init__(self, styleSheet):
 		QDialog.__init__(self)
 
+		self.style = styleSheet
 		self.createDialog()
 
 	def createDialog(self): 
-		self.howToStyle = "QDialog{background-color: #232121; border:1px solid gray; border-radius: 10px}"
+		self.howToStyle = self.style
 
 		self.setWindowTitle("How To!")
 

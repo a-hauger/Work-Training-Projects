@@ -5,6 +5,7 @@ from FormActions import Actions
 from FormHowTo import howToDialog
 from FormAbout import aboutDialog
 from FormThemeChange import themeChange
+from FormDockWidgets import docks
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -17,25 +18,15 @@ class MainWindow(QMainWindow):
 
 		self.mainWidget = MainWidget()
 
-		#self.theme = themeChange()
+
+
+		self.theme = themeChange()
 
 		self.isModified = 0
 		"""*************************************************************************"""
 		""" 			CREATE AND SET STYLE SHEETS 			    """
 		"""*************************************************************************"""
-		defaultStyle = "QMenuBar{background-color: #232121;}\
-				QMenuBar::item{background-color: #232121;}\
-				QMenuBar::item:selected{background-color: #504b4b;}\
-				QMainWindow{background-color: #232121;}\
-				QWidget{background-color: #232121;}\
-				QLabel{color: #ffffff;}\
-				QPushButton{background-color: #504b4b; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #000000;}\
-				QLineEdit{background-color: #504b4b; border: 2px solid #232121; border-radius: 10px;}\
-				QStatusBar::item{border: None;}\
-				QDialog{background-color: #232121; border: 1px solid black; border-radius: 10px}\
-				QMessageBox{color: #232121; border: 1px solid black; border-radius: 10px}\
-				QGroupBox{background-color: #232121; border: 1px solid black; border-radius: 10px}"
-
+		defaultStyle = self.theme.getStyleSheet()
 		self.setStyleSheet(defaultStyle)
 		"""*************************************************************************"""
 		""" 			CREATE WINDOW TITLE, MENU, STATUS BARS 		    """
@@ -44,15 +35,20 @@ class MainWindow(QMainWindow):
 		self.setWindowTitle("MadLibs!")
 		self.resize(500, 600)
 		self.setCentralWidget(self.mainWidget)
+
+		self.tools = QToolBar()
+		self.tools.addActions(self.actions.getToolbarActions())
+
+		self.addToolBar(self.tools)
 	
 		#Menu Bar	
-		self.fileMenu = QMenu("File")
+		self.fileMenu = QMenu("&File")
 		self.fileMenu.addActions(self.actions.getFileActions())
 
-		self.editMenu = QMenu("Edit")
+		self.editMenu = QMenu("&Edit")
 		self.editMenu.addActions(self.actions.getEditActions())
 	
-		self.helpMenu = QMenu("Help")
+		self.helpMenu = QMenu("&Help")
 		self.helpMenu.addActions(self.actions.getHelpActions())
 	
 		self.menuBar().addMenu(self.fileMenu)
@@ -62,7 +58,6 @@ class MainWindow(QMainWindow):
 		#status bar
 		self.statusLabel = QLabel("Main Page")
 		self.statusBar().insertWidget(0, self.statusLabel)
-		self.mainWidget.closeButton.clicked.connect(self.exitMadLib)
 
 		#file actions
 		self.actions.exitAction.triggered.connect(self.exitMadLib)
@@ -81,6 +76,7 @@ class MainWindow(QMainWindow):
 		
 		#push button actions
 		self.mainWidget.mainPage.moveToFormButton.clicked.connect(self.moveToAction)
+		self.mainWidget.closeButton.clicked.connect(self.exitMadLib)
 
 		self.mainWidget.firstPage.generateMadLib.clicked.connect(self.generateAction)
 		self.mainWidget.secondPage.againButton.clicked.connect(self.againAction)
@@ -173,7 +169,6 @@ class MainWindow(QMainWindow):
 
 	def saveMadLib(self):
 		index = self.mainWidget.mainPage.comboBox.currentIndex()
-		print(str(index))
 		if (index == 1):
 			textList = self.mainWidget.firstPage.getTextBoxData()
 		elif (index == 2):
@@ -243,12 +238,14 @@ class MainWindow(QMainWindow):
 	"""HELP ACTIONS"""
 	"""************"""
 	def howTo(self):
-		self.howTo = howToDialog()
+		style = self.theme.getStyleSheet()
+		self.howTo = howToDialog(style)
 
 		return
 
 	def aboutMadLib(self):
-		self.about = aboutDialog()
+		style = self.theme.getStyleSheet()
+		self.about = aboutDialog(style)
 		return
 	"""************"""
 	"""EDIT ACTIONS"""
@@ -270,9 +267,9 @@ class MainWindow(QMainWindow):
 		return
 
 	def themeChangeBox(self):
-		theme = themeChange()
-		theme.exec_()
-		newStyle = theme.getStyleSheet()
+		#theme = themeChange()
+		self.theme.exec_()
+		newStyle = self.theme.getStyleSheet()
 		
 		self.setStyleSheet(newStyle)
 

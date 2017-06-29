@@ -3,15 +3,17 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+import os
 
 class aboutDialog(QDialog):
-	def __init__(self):
+	def __init__(self, styleSheet):
 		QDialog.__init__(self)
 
+		self.style = styleSheet
 		self.createDialog()
 
 	def createDialog(self):
-		self.aboutStyle = "QDialog{background-color: #232121; border:1px solid gray; border-radius: 10px}"
+		self.aboutStyle = self.style
  
 		self.setWindowTitle("About!")
  
@@ -24,6 +26,12 @@ class aboutDialog(QDialog):
 		self.aboutText = QLabel("MadLib! Generator\nVersion: 1.0\nUpdated: 6/23/17")
 		self.aboutText.setFont(self.bodyFont)
 		self.aboutText.setWordWrap(True)
+
+		self.aboutDevIcon = QPixmap("AboutPic.png")
+		self.aboutDevIconLabel = QLabel()
+		self.aboutDevIconLabel.setPixmap(self.aboutDevIcon)
+		self.iconLabelStyle = "QFrame{border-radius:5px;}"
+		self.aboutDevIconLabel.setStyleSheet(self.iconLabelStyle)
 
 		self.aboutDeveloperTitle = QLabel("About the Developer! --Anthony Hauger--")
 		self.aboutDeveloperTitle.setFont(self.titleFont)
@@ -48,6 +56,7 @@ class aboutDialog(QDialog):
 		self.aboutLayout.addWidget(self.aboutFrame2)
 		self.aboutLayout.addWidget(self.aboutDeveloperTitle, alignment = Qt.AlignCenter)
 		self.aboutLayout.addWidget(self.aboutFrame3)
+		self.aboutLayout.addWidget(self.aboutDevIconLabel, alignment = Qt.AlignCenter)
 		self.aboutLayout.addWidget(self.aboutDeveloperText, alignment = Qt.AlignCenter)
 		self.aboutDeveloperText.setFixedSize(self.aboutDeveloperText.sizeHint())
 
