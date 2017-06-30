@@ -32,8 +32,9 @@ class themeChange(QDialog):
 				QComboBox:editable{background:white;}\
 				QComboBox:!editable, QComboBox::drop-down:editable{background: #504b4b;}\
 				QComboBox:!editable:on, QComboBox::drop-down:editable:on{background: #232121;}\
-				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #504b4b; border-radius: 3px;}"
-
+				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #504b4b; border-radius: 3px;}\
+				QProgressBar{border: 1px solid #232121; border-radius: 5px; text-align: center}\
+				QProgressBar::chunk{background-color: #504b4b; margin: 0.5px;}"
 		self.createDialog()
 
 	def createDialog(self):
@@ -100,7 +101,9 @@ class themeChange(QDialog):
 				QComboBox:editable{background:white;}\
 				QComboBox:!editable, QComboBox::drop-down:editable{background: #500000;}\
 				QComboBox:!editable:on, QComboBox::drop-down:editable:on{background: #230000;}\
-				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #500000; border-radius: 3px;}"
+				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #500000; border-radius: 3px;}\
+				QProgressBar{border: 1px solid #230000; border-radius: 5px; text-align: center}\
+				QProgressBar::chunk{background-color: #500000; margin: 0.5px;}"
 
 		elif (self.changeThemeGreen.isChecked()):
 			#change theme to green
@@ -128,7 +131,9 @@ QComboBox{border: 1px solid #53cd69; border-radius: 3px; padding: 1px 18px 1px 3
                                 QComboBox:editable{background:white;}\
                                 QComboBox:!editable, QComboBox::drop-down:editable{background: #00500b;}\
                                 QComboBox:!editable:on, QComboBox::drop-down:editable:on{background: #002300;}\
-                                QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #00500b; border-radius: 3px;}"
+                                QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #00500b; border-radius: 3px;}\
+				QProgressBar{border: 1px solid #002300; border-radius: 5px; text-align: center}\
+				QProgressBar::chunk{background-color: #00500b; margin: 0.5px}"
 
 		elif (self.changeThemeBlue.isChecked()):
 			#change theme to blue
@@ -156,7 +161,9 @@ QComboBox{border: 1px solid #53cd69; border-radius: 3px; padding: 1px 18px 1px 3
 				QComboBox:editable{background:white;}\
 				QComboBox:!editable, QComboBox::drop-down:editable{background: #020050;}\
 				QComboBox:!editable:on, QComboBox::drop-down:editable:on{background: #000423;}\
-				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #020050; border-radius: 3px;}"
+				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #020050; border-radius: 3px;}\
+				QProgressBar{border: 1px solid #000423; border-radius: 5px; text-box: center}\
+				QProgressBar::chunk{background-color: #020050; margin: 0.5px}"
 
 		elif (self.changeThemeDefault.isChecked()):
 			self.sheet = "QMenuBar{background-color: #232121;}\
@@ -183,7 +190,9 @@ QComboBox{border: 1px solid #53cd69; border-radius: 3px; padding: 1px 18px 1px 3
 				QComboBox:editable{background:white;}\
 				QComboBox:!editable, QComboBox::drop-down:editable{background: #504b4b;}\
 				QComboBox:!editable:on, QComboBox::drop-down:editable:on{background: #232121;}\
-				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #504b4b; border-radius: 3px;}"
+				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #504b4b; border-radius: 3px;}\
+				QProgressBar{border: 1px solid #232121; border-radius: 5px; text-align: center}\
+				QProgressBar::chunk{background-color: #504b4b; margin: 0.5px;}"
 
 		else:
 			self.sheet = "QMenuBar{background-color: #232121;}\
@@ -210,7 +219,9 @@ QComboBox{border: 1px solid #53cd69; border-radius: 3px; padding: 1px 18px 1px 3
 				QComboBox:editable{background:white;}\
 				QComboBox:!editable, QComboBox::drop-down:editable{background: #504b4b;}\
 				QComboBox:!editable:on, QComboBox::drop-down:editable:on{background: #232121;}\
-				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #504b4b; border-radius: 3px;}"
+				QComboBox::drop-down{subcontrol-origin: padding; subcontrol-position: top right; width 15px; border: 1px solid #504b4b; border-radius: 3px;}\
+				QProgressBar{border:1px solid #232121; border-radius: 5px; text-align: center;}\
+				QProgressBar::chunk{background-color: #504b4b; margin: 0.5px}"
 
 		self.close()
 

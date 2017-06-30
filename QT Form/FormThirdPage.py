@@ -29,6 +29,13 @@ class thirdPageWidget(QWidget):
 		self.generateMadLib.setFont(self.boldFont)
 		self.generateMadLib.setFixedSize(150, 50)
 
+		self.jumpToThird = QPushButton()
+		self.jumpPix = QPixmap("Earth.png")
+		self.jumpIcon = QIcon(self.jumpPix)
+		self.jumpToThird.setIcon(self.jumpIcon)
+		self.jumpToThird.setIconSize(self.jumpPix.rect().size())
+		self.jumpToThird.setFixedSize(75, 75)
+
 		self.textbox1 = QLineEdit(self)
 		self.textbox1.setPlaceholderText("Adjective")
 
@@ -119,6 +126,7 @@ class thirdPageWidget(QWidget):
 		self.thirdPageLayout.addWidget(self.textbox19)
 
 		self.thirdPageLayout.addWidget(self.generateMadLib, alignment = Qt.AlignCenter)
+		self.thirdPageLayout.addStretch(1)
 		"""*************************************************************************"""
 		"""                            END WIDGETS                                  """
 		"""*************************************************************************"""

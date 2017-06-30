@@ -8,6 +8,8 @@ from FormFirstPage import *
 from FormSecondPage import *
 from FormThirdPage import *
 from FormFourthPage import *
+from FormFifthPage import *
+from FormSixthPage import *
 
 class MainWidget(QWidget):
 	def __init__(self):
@@ -29,6 +31,8 @@ class MainWidget(QWidget):
 		self.secondPage = secondPageWidget()
 		self.thirdPage = thirdPageWidget()		
 		self.fourthPage = fourthPageWidget()
+		self.fifthPage = fifthPageWidget()
+		self.sixthPage = sixthPageWidget()
 
 		self.mainLayout = QVBoxLayout(self)
 
@@ -44,6 +48,8 @@ class MainWidget(QWidget):
 		self.Stack.addWidget(self.secondPage)
 		self.Stack.addWidget(self.thirdPage)
 		self.Stack.addWidget(self.fourthPage)
+		self.Stack.addWidget(self.fifthPage)
+		self.Stack.addWidget(self.sixthPage)
 
 		"""*****************************************************************"""
 		""" CREATE SCROLLAREA, ADD SCROLL WIDGET TO AREA, ADD AREA TO LAYOUT"""

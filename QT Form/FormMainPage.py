@@ -24,14 +24,18 @@ class mainPageWidget(QWidget):
 
 		self.comboBox = QComboBox()
 		self.comboBox.SizeAdjustPolicy(QComboBox.AdjustToContents)
-		#self.comboBox.setStyleSheet("background: red; border: 1px solid gray;")
 
 		self.comboBox.addItem("Choose your Mad Lib!")
 		self.comboBox.addItem("1. Thanksgiving Day!")
 		self.comboBox.addItem("2. Our Solar System!")
+		self.comboBox.addItem("3. Michael Bay!")
 		self.comboBox.setFixedWidth(self.comboBox.sizeHint().width()+30)
 
-		self.mainPageLayout.addStretch(stretch = 1)	
+		self.fillerPix = QPixmap("NewMadLib.png")
+		self.fillerLabel = QLabel()
+		self.fillerLabel.setPixmap(self.fillerPix)
+
+		self.mainPageLayout.addWidget(self.fillerLabel, alignment = Qt.AlignCenter)	
 		self.mainPageLayout.addWidget(self.label, alignment = Qt.AlignCenter)
 		self.mainPageLayout.addWidget(self.comboBox, alignment = Qt.AlignCenter)
 		self.mainPageLayout.addWidget(self.moveToFormButton, alignment = Qt.AlignCenter)

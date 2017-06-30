@@ -26,6 +26,13 @@ class firstPageWidget(QWidget):
 		self.generateMadLib.setFont(self.boldFont)
 		self.generateMadLib.setFixedSize(150, 50)
 
+		self.jumpToFirst = QPushButton()
+		self.jumpPix = QPixmap("turkey.png")
+		self.jumpIcon = QIcon(self.jumpPix)
+		self.jumpToFirst.setIcon(self.jumpIcon)
+		self.jumpToFirst.setIconSize(self.jumpPix.rect().size())
+		self.jumpToFirst.setFixedSize(75, 75)
+
 		self.textbox1 = QLineEdit(self)
 		self.textbox1.setPlaceholderText("Adjective")
 
@@ -95,7 +102,7 @@ class firstPageWidget(QWidget):
 		self.firstPageLayout.addWidget(self.textbox14)
 
 		self.firstPageLayout.addWidget(self.generateMadLib, alignment = Qt.AlignCenter)
-
+		self.firstPageLayout.addStretch(1)
 		"""****************************************************************"""
 		"""               END WIDGETS FOR FIRST PAGE                       """
 		"""****************************************************************"""
