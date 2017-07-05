@@ -10,7 +10,6 @@ class textBoxCreator(QLineEdit):
 
 		self.isModified = 0
 
-		#self.textbox = QLineEdit(self)
 		self.setPlaceholderText(kindOfWord)
 
 	def isTextMod(self):
@@ -20,6 +19,10 @@ class textBoxCreator(QLineEdit):
 			return (1)
 
 	def textMod(self):
-		if (self.isModified == 0):
-			self.isModified = 1
-			return
+		if (self.text() != ""):
+			if (self.isModified == 0):
+				self.isModified = 1
+		else:
+			self.isModified = 0
+
+		return

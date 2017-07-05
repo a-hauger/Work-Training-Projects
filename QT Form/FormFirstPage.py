@@ -80,9 +80,7 @@ class firstPageWidget(QWidget):
 		textList = []
 
 		for textbox in self.textboxList:
-			print(textbox.text())
 			textList.append(textbox.text())
-		print(str(textList))
 		return (textList)
 
 	def setTextBoxData(self):
