@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 
+from textBox import *
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -26,54 +28,33 @@ class firstPageWidget(QWidget):
 		self.generateMadLib.setFont(self.boldFont)
 		self.generateMadLib.setFixedSize(150, 50)
 
-		self.jumpToFirst = QPushButton()
-		self.jumpPix = QPixmap("turkey.png")
-		self.jumpIcon = QIcon(self.jumpPix)
-		self.jumpToFirst.setIcon(self.jumpIcon)
-		self.jumpToFirst.setIconSize(self.jumpPix.rect().size())
-		self.jumpToFirst.setFixedSize(75, 75)
+		self.textbox1 = textBoxCreator("Adjective")
 
-		self.textbox1 = QLineEdit(self)
-		self.textbox1.setPlaceholderText("Adjective")
+		self.textbox2 = textBoxCreator("Adjective")
 
-		self.textbox2 = QLineEdit(self)
-		self.textbox2.setPlaceholderText("Adjective")
+		self.textbox3 = textBoxCreator("Type of Bird")
 
-		self.textbox3 = QLineEdit(self)
-		self.textbox3.setPlaceholderText("Type of Bird")
+		self.textbox4 = textBoxCreator("Room of House")
 
-		self.textbox4 = QLineEdit(self)
-		self.textbox4.setPlaceholderText("Room of House")
+		self.textbox5 = textBoxCreator("Past Tense Verb")
 
-		self.textbox5 = QLineEdit(self)
-		self.textbox5.setPlaceholderText("Past Tense Verb")
+		self.textbox6 = textBoxCreator("Verb")
 
-		self.textbox6 = QLineEdit(self)
-		self.textbox6.setPlaceholderText("Verb")
+		self.textbox7 = textBoxCreator("Relative's Name")
 
-		self.textbox7 = QLineEdit(self)
-		self.textbox7.setPlaceholderText("Relative's Name")
+		self.textbox8 = textBoxCreator("Noun")
 
-		self.textbox8 = QLineEdit(self)
-		self.textbox8.setPlaceholderText("Noun")
+		self.textbox9 = textBoxCreator("Liquid")
 
-		self.textbox9 = QLineEdit(self)
-		self.textbox9.setPlaceholderText("Liquid")
+		self.textbox10 = textBoxCreator("Verb Ending in -ing")
 
-		self.textbox10 = QLineEdit(self)
-		self.textbox10.setPlaceholderText("Verb Ending in -ing")
+		self.textbox11 = textBoxCreator("Plural Body Part")
 
-		self.textbox11 = QLineEdit(self)
-		self.textbox11.setPlaceholderText("Plural Body Part")
+		self.textbox12 = textBoxCreator("Plural Noun")
 
-		self.textbox12 = QLineEdit(self)
-		self.textbox12.setPlaceholderText("Plural Noun")
+		self.textbox13 = textBoxCreator("Verb Ending in -ing")
 
-		self.textbox13 = QLineEdit(self)
-		self.textbox13.setPlaceholderText("Verb Ending in -ing")
-
-		self.textbox14 = QLineEdit(self)
-		self.textbox14.setPlaceholderText("Noun")
+		self.textbox14 = textBoxCreator("Noun")
 
 		self.textboxList = [self.textbox1, self.textbox2, self.textbox3, self.textbox4, self.textbox5, self.textbox6, self.textbox7, self.textbox8, self.textbox9, self.textbox10, self.textbox11, self.textbox12, self.textbox13, self.textbox14]
 		
@@ -86,20 +67,8 @@ class firstPageWidget(QWidget):
 
 		self.firstPageLayout.addWidget(self.label, alignment = Qt.AlignCenter)
 
-		self.firstPageLayout.addWidget(self.textbox1)
-		self.firstPageLayout.addWidget(self.textbox2)
-		self.firstPageLayout.addWidget(self.textbox3)
-		self.firstPageLayout.addWidget(self.textbox4)
-		self.firstPageLayout.addWidget(self.textbox5)
-		self.firstPageLayout.addWidget(self.textbox6)
-		self.firstPageLayout.addWidget(self.textbox7)
-		self.firstPageLayout.addWidget(self.textbox8)
-		self.firstPageLayout.addWidget(self.textbox9)
-		self.firstPageLayout.addWidget(self.textbox10)
-		self.firstPageLayout.addWidget(self.textbox11)
-		self.firstPageLayout.addWidget(self.textbox12)
-		self.firstPageLayout.addWidget(self.textbox13)
-		self.firstPageLayout.addWidget(self.textbox14)
+		for textbox in self.textboxList:
+			self.firstPageLayout.addWidget(textbox)
 
 		self.firstPageLayout.addWidget(self.generateMadLib, alignment = Qt.AlignCenter)
 		self.firstPageLayout.addStretch(1)
@@ -110,44 +79,23 @@ class firstPageWidget(QWidget):
 	def getTextBoxData(self):
 		textList = []
 
-		textList.append(self.textbox1.text())
-		textList.append(self.textbox2.text())
-		textList.append(self.textbox3.text())
-		textList.append(self.textbox4.text())
-		textList.append(self.textbox5.text())
-		textList.append(self.textbox6.text())
-		textList.append(self.textbox7.text())
-		textList.append(self.textbox8.text())
-		textList.append(self.textbox9.text())
-		textList.append(self.textbox10.text())
-		textList.append(self.textbox11.text())
-		textList.append(self.textbox12.text())
-		textList.append(self.textbox13.text())
-		textList.append(self.textbox14.text())
-
+		for textbox in self.textboxList:
+			print(textbox.text())
+			textList.append(textbox.text())
+		print(str(textList))
 		return (textList)
 
 	def setTextBoxData(self):
 
-		self.textbox1.clear()
-		self.textbox2.clear()
-		self.textbox3.clear()
-		self.textbox4.clear()
-		self.textbox5.clear()
-		self.textbox6.clear()
-		self.textbox7.clear()
-		self.textbox8.clear()
-		self.textbox9.clear()
-		self.textbox10.clear()
-		self.textbox11.clear()
-		self.textbox12.clear()
-		self.textbox13.clear()
-		self.textbox14.clear()
+		for textbox in self.textboxList:
+			textbox.clear()
 
 		return
 
 	def setOpenData(self, textList):
 		i = 0
 		for textbox in self.textboxList:
-			textbox.setText(textList[i])
+			if(textList[i] != ""):
+				textbox.setText(textList[i])
+				textbox.textMod()
 			i = i+1

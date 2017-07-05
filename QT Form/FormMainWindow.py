@@ -14,18 +14,17 @@ class MainWindow(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
 
-		self.actions= Actions()
-
-		self.mainWidget = MainWidget()
-
-		self.theme = themeChange()
-
 		self.isModified = 0
 		self.val = 0
+
+
+		self.actions = Actions()
 
 		"""*************************************************************************"""
 		""" 			CREATE AND SET STYLE SHEETS 			    """
 		"""*************************************************************************"""
+
+		self.theme = themeChange()
 
 		defaultStyle = self.theme.getStyleSheet()
 		self.setStyleSheet(defaultStyle)
@@ -33,9 +32,12 @@ class MainWindow(QMainWindow):
 		"""*************************************************************************"""
 		""" 			CREATE WINDOW TITLE, MENU, STATUS BARS 		    """
 		"""*************************************************************************"""
+
+		self.mainWidget = MainWidget()
+
 		#window
 		self.setWindowTitle("MadLibs!")
-		self.resize(500, 600)
+		self.resize(500, 700)
 		self.setCentralWidget(self.mainWidget)
 
 		#Tool Bar
@@ -45,16 +47,7 @@ class MainWindow(QMainWindow):
 		self.addToolBar(self.tools)
 
 		#Dock
-		self.dock = QDockWidget("Jump!")
-		self.widget = QWidget()
-		self.dockLayout = QHBoxLayout()
-		self.dockLayout.addWidget(self.mainWidget.firstPage.jumpToFirst)
-		self.dockLayout.addWidget(self.mainWidget.thirdPage.jumpToThird)
-		self.dockLayout.addWidget(self.mainWidget.fifthPage.jumpToFifth)
-		self.widget.setLayout(self.dockLayout)	
-
-		self.dock.setWidget(self.widget)
-
+		self.dock = docks()
 		self.addDockWidget(Qt.BottomDockWidgetArea, self.dock)
 	
 		#Menu Bar	
@@ -78,6 +71,10 @@ class MainWindow(QMainWindow):
 		self.progressBar.setMaximum(0)
 		self.statusBar().insertWidget(0, self.statusLabel)
 		self.statusBar().insertWidget(1, self.progressBar)
+
+		"""*****************************************************"""
+		""" 			ACTIONS 			"""
+		"""*****************************************************"""
 
 		#file actions
 		self.actions.exitAction.triggered.connect(self.exitMadLib)
@@ -107,9 +104,9 @@ class MainWindow(QMainWindow):
 		self.mainWidget.fifthPage.generateMadLib.clicked.connect(self.generateAction)
 		self.mainWidget.sixthPage.againButton.clicked.connect(self.againAction)
 
-		self.mainWidget.firstPage.jumpToFirst.clicked.connect(self.jumpToThanksgiving)
-		self.mainWidget.thirdPage.jumpToThird.clicked.connect(self.jumpToSolar)
-		self.mainWidget.fifthPage.jumpToFifth.clicked.connect(self.jumpToMichael)
+		self.dock.jumpToFirst.clicked.connect(self.jumpToThanksgiving)
+		self.dock.jumpToThird.clicked.connect(self.jumpToSolar)
+		self.dock.jumpToFifth.clicked.connect(self.jumpToMichael)
 
 		"""**************************************************************************"""
 		""" 	      CREATE LINE EDIT CHANGE CONNECTIONS FOR 1ST PAGE 		     """
@@ -117,13 +114,16 @@ class MainWindow(QMainWindow):
 		
 		for textbox in self.mainWidget.firstPage.textboxList:
 			textbox.textEdited.connect(self.actions.setIsModified)
-			textbox.editingFinished.connect(self.increaseProgressBar)
+			textbox.textEdited.connect(textbox.textMod)
+			textbox.textEdited.connect(self.increaseProgressBar)
+		
 		"""**************************************************************************"""
 		""" 	   CREATE LINE EDIT CHANGE CONNECTIONS FOR 3RD PAGE 	             """
 		"""**************************************************************************"""
 
 		for textbox in self.mainWidget.thirdPage.textboxList:
 			textbox.textEdited.connect(self.actions.setIsModified)
+			textbox.editingFinished.connect(textbox.textMod)
 			textbox.editingFinished.connect(self.increaseProgressBar)
 
 		"""*************************************************************************"""
@@ -131,6 +131,7 @@ class MainWindow(QMainWindow):
 		"""*************************************************************************"""
 		for textbox in self.mainWidget.fifthPage.textboxList:
 			textbox.textEdited.connect(self.actions.setIsModified)
+			textbox.editingFinished.connect(textbox.textMod)
 			textbox.editingFinished.connect(self.increaseProgressBar)
 
 	"""********************************************************************************"""
@@ -288,6 +289,7 @@ class MainWindow(QMainWindow):
 			self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
 			self.mainWidget.firstPage.setOpenData(textList)
 			self.progressBar.setMaximum(14)
+			self.increaseProgressBar()
 			self.actions.setIsModified()
 		if (index == 2):
 			self.mainWidget.Stack.setCurrentIndex(3)
@@ -296,6 +298,7 @@ class MainWindow(QMainWindow):
 			self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
 			self.mainWidget.thirdPage.setOpenData(textList)
 			self.progressBar.setMaximum(19)
+			self.increaseProgressBar()
 			self.actions.setIsModified()
 		if (index == 3):
 			self.mainWidget.Stack.setCurrentIndex(5)
@@ -304,6 +307,7 @@ class MainWindow(QMainWindow):
 			self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
 			self.mainWidget.fifthPage.setOpenData(textList)
 			self.progressBar.setMaximum(28)
+			self.increaseProgressBar()
 			self.actions.setIsModified()
 		return
 
@@ -487,7 +491,6 @@ class MainWindow(QMainWindow):
 
 	def generateAction(self):
 		textList = []
-
 		if (self.mainWidget.Stack.currentIndex() == 1):
 
 			textList = self.mainWidget.firstPage.getTextBoxData()	
@@ -497,7 +500,6 @@ class MainWindow(QMainWindow):
 			self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
 
 		elif (self.mainWidget.Stack.currentIndex() == 3):
-
 			textList = self.mainWidget.thirdPage.getTextBoxData()
 			self.mainWidget.fourthPage.setTextBoxData(textList)
 			self.mainWidget.Stack.setCurrentIndex(4)
@@ -522,6 +524,7 @@ class MainWindow(QMainWindow):
 			if (retval == 0):
 				self.mainWidget.firstPage.setTextBoxData()
 				self.mainWidget.thirdPage.setTextBoxData()
+				self.mainWidget.fifthPage.setTextBoxData()
 				self.mainWidget.Stack.setCurrentIndex(0)
 				self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
 				self.statusLabel.setText("Main Page!")		
@@ -531,6 +534,7 @@ class MainWindow(QMainWindow):
 				self.saveAction()
 				self.mainWidget.firstPage.setTextBoxData()
 				self.mainWidget.thirdPage.setTextBoxData()
+				self.mainWidget.fifthPage.setTextBoxData()
 				self.mainWidget.Stack.setCurrentIndex(0)
 				self.mainWidget.Stack.setCurrentIndex(0)
 				self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
@@ -540,6 +544,7 @@ class MainWindow(QMainWindow):
 		else:
 			self.mainWidget.firstPage.setTextBoxData()
 			self.mainWidget.thirdPage.setTextBoxData()
+			self.mainWidget.fifthPage.setTextBoxData()
 			self.mainWidget.Stack.setCurrentIndex(0)
 			self.mainWidget.scrollArea.verticalScrollBar().setValue(0)
 			self.statusLabel.setText("Main Page!")
@@ -554,7 +559,15 @@ class MainWindow(QMainWindow):
 	"""PROGRESS BAR SPECIFIC METHOD"""
 	"""****************************"""
 	def increaseProgressBar(self):
-		self.val = self.val+1
-		self.progressBar.setValue(self.val)
+		self.val = 0
+		if (self.mainWidget.Stack.currentIndex() == 1):
+			for textbox in self.mainWidget.firstPage.textboxList:
+				self.val = self.val + textbox.isTextMod()
+		elif (self.mainWidget.Stack.currentIndex() == 3):
+			for textbox in self.mainWidget.thirdPage.textboxList:
+				self.val = self.val + textbox.isTextMod()
+		elif (self.mainWidget.Stack.currentIndex() == 5):
+			for textbox in self.mainWidget.fifthPage.textboxList:
+				self.val = self.val + textbox.isTextMod()
 
-		return
+		self.progressBar.setValue(self.val)

@@ -74,7 +74,7 @@ class fourthPageWidget(QWidget):
 		self.box15 = textList[14]
 		self.box16 = textList[15]
 		self.box17 = textList[16]
-		self.box18 = textList[18]
+		self.box18 = textList[17]
 		self.box19 = textList[18]
 
 		self.label.setText("When we look up into the sky on a/an " + self.box1 + " Summer night, we see millions of tiny spots of light.  Each one represent a/an " + self.box2 + " which is the center of a/an " + self.box3 + "solar system with dozens of " + self.box4 + " revolving " + self.box5 + " around a distant sun.  Sometimes these suns expand and begin " + self.box6 + " their neighbors.  Soon they will become so big, hey will turn into " + self.box7 + ".  Eventually, they subside and become " + self.box8 + " giants or perhaps black " + self.box9 + ".  our own planet, which we call " + self.box10 + ", circles around our " + self.box11 + " sun " + self.box12 + " times every year.  there are eight other planets in our solar system.  They are named " + self.box13 + ", " + self.box14 + ", " + self.box15 + ", " + self.box16 + ", " + self.box17 + ", " + self.box18 + ", Jupiter and Mars.  Scientists who study these planets are called " + self.box19 + ".")
