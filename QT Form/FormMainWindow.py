@@ -291,6 +291,7 @@ class MainWindow(QMainWindow):
 			self.progressBar.setMaximum(14)
 			self.increaseProgressBar()
 			self.actions.setIsModified()
+			self.mainWidget.mainPage.comboBox.setCurrentIndex(1)
 		if (index == 2):
 			self.mainWidget.Stack.setCurrentIndex(3)
 			textList.append(line.strip('\n'))
@@ -300,6 +301,7 @@ class MainWindow(QMainWindow):
 			self.progressBar.setMaximum(19)
 			self.increaseProgressBar()
 			self.actions.setIsModified()
+			self.mainWidget.mainPage.comboBox.setCurrentIndex(2)
 		if (index == 3):
 			self.mainWidget.Stack.setCurrentIndex(5)
 			textList.append(line.strip('\n'))
@@ -309,6 +311,7 @@ class MainWindow(QMainWindow):
 			self.progressBar.setMaximum(28)
 			self.increaseProgressBar()
 			self.actions.setIsModified()
+			self.mainWidget.mainPage.comboBox.setCurrentIndex(3)
 		return
 
 	"""************"""
