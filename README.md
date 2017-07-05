@@ -16,3 +16,7 @@ The following are projects created at LASP in order to assist in my programming 
         
 4. QT Form: Using PyQt5 and python3, create a MadLib! program.  The features include: saving the madlib, opening a madlib, 
         changing the theme (using stylesheets), using stacked layouts.
+
+DEPENDENCIES:
+python3
+PyQt5
