@@ -1,0 +1,65 @@
+"""***********************************"""
+"""LIST OF FEATURES IN MAD LIB PROGRAM"""
+"""***********************************"""
+
+Top To Bottom:
+
+*Menu Bar
+	*File Menu
+		*New - Returns you to main page to choose a new MadLib
+		*Save - Saves the MadLib you are currently working on
+		*Open - Opens a *.csv file of a previously started MadLib
+		*Restart - Restarts current MadLib or returns you to main page
+		*Exit - Exits program
+	*Edit Menu
+		*Back - Moves you back a page without altering input text
+		*Theme - Changes the window color/theme
+	*Help Menu
+		*How to - Instructions on how to play MadLibs!
+		*About - About the program; version type, dev bio
+
+*Tool Bar
+	*New Button - Runs New; Returns you to main page to choose new MadLib
+	*Save Button - Runs Save; Saves current MadLib state
+	*Open Button - Runs Open; Opens *.csv of previously saved MadLib
+	*Back Button - Runs Back; Moves back one page without altering text.
+	*Tool Bar is floatable
+
+*Main Widget
+	*Main Page
+		*Combo Box - Select one of three MadLibs to fill in
+		*Go To Button - Move to selected MadLib
+	*First Page - Thanksgiving Day Form
+		*14 Text Edits - Input a word based on provided prompt
+		*Generate Button - Gathers text in text boxes to place in MadLib prompt
+	*Second Page - Thanksgiving Day Prompt
+		*MadLib - No function; sets user input into MadLib text
+		*Again Button - Returns you to main page to select a new MadLib
+	*Third Page - Our Solar System Form
+		*19 Text Edits - Input a word based on provided prompt
+		*Generate Button - Gathers text in text boxes to place in MadLib prompt
+	*Fourth Page - Our Solar System Prompt
+		*MadLib - No Function; sets user input into MadLib text
+		*Again Button - Returns you to main page to select a new MadLib
+	*Fifth Page - Michael Bay Form
+		*28 Text Edits - Input a word based on provided prompt
+		*Generate Button - Gathers text in text boxes to place in MadLibprompt
+	*Sixth Page - Michael Bay Prompt
+		*MadLib - No function; sets user input into MadLib text
+		*Again Button - Returns you to main page to select a new MadLib
+	*Close Button - Runs Exit; Exits Program
+
+*Dock Widget
+	*Turkey Button - Jump to Thanksgiving Day MadLib
+	*Earth Button - Jump to Our Solar System MadLib
+	*Explosion Button - Jump to Michael Bay MadLib
+	*Windows Button - Click to undock Dock Widget
+		*User can undock widget; Dock Widget is floatable
+	*X Button - Click to close Dock Widget
+
+*Status Bar
+	*Location Indicator - Tells user what MadLib/Page they are currently on
+	*Progress Bar - Indicates to the user how far they have progressed in current MadLib.
+
+*Miscelaneous
+	*Save Prompt - If text boxes have been modified, app prompts user to save.

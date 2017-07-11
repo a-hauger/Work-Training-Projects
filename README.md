@@ -24,6 +24,12 @@ The following are projects created at LASP in order to assist in my programming 
         * Find Primes - Finds the first 100 prime numbers as well as finding the first x prime numbers based on user input.
         * Image Sort - Sorts the images in a directory based on pixel size. Takes a directory in the command line.
         * Isocoles - Creates an isocoles triangle of base x based on user input.
+
+6. C Exercises: Various scripts to cement my knowledge of the C programming language.
+	* StringToInt - Takes a number value and turns that string into an integer without casting.
+	* sortInts - Uses various sorting algorithms on a fixed and a random array of integers.
+	* Find Primes - Finds the first 100 prime numbers as well as finding the first x prime numbers based on user input.
+	* isocoles - Creates an isocoles triangle of base x based on user input.
         
 DEPENDENCIES:
 (For QT Form)
